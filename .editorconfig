@@ -1,0 +1,14 @@
+root = true
+
+[*]
+insert_final_newline = true
+
+[*.{java,js}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.xml]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true

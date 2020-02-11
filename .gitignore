@@ -1,0 +1,12 @@
+/application.properties
+.eml/
+.idea/
+*.iml
+*.class
+*.classpath
+*.project
+*.bak
+*.pdf
+*.versionsBackup
+.settings/
+target/
