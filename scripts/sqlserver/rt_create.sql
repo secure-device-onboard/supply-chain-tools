@@ -42,7 +42,8 @@ GO
 CREATE TABLE [dbo].[rt_ownership_voucher](
 	[device_serial_no] [varchar](128) NOT NULL,
 	[voucher] [text] NOT NULL,
-	[customer_public_key_id] [int] FOREIGN KEY REFERENCES [dbo].[rt_customer_public_key] (customer_public_key_id)
+	[customer_public_key_id] [int] FOREIGN KEY REFERENCES [dbo].[rt_customer_public_key] (customer_public_key_id),
+	[uuid] [varchar](64) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 

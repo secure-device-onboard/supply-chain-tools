@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `intel_sdo`.`rt_ownership_voucher` (
   `device_serial_no` VARCHAR(128) NOT NULL,
   `voucher` LONGTEXT NOT NULL,
   `customer_public_key_id` INT NULL,
+  `uuid` VARCHAR(64) NULL,
   PRIMARY KEY (`device_serial_no`),
   INDEX `fk_certificate_id_idx` (`customer_public_key_id` ASC) ,
   CONSTRAINT `fk_public_key_id`
