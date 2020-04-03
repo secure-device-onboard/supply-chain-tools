@@ -1,13 +1,13 @@
 --  Copyright 2020 Intel Corporation
 --  SPDX-License-Identifier: Apache 2.0
 
-USE [intel_sdo]
+USE [sdo]
 GO
 
 IF EXISTS 
     (SELECT name  
      FROM master.dbo.syslogins 
-		where name = 'sdo' and dbname = 'intel_sdo')
+		where name = 'sdo' and dbname = 'sdo')
 BEGIN
 	DROP USER sdo;
 END
@@ -22,10 +22,10 @@ BEGIN
 END
 GO 
 
-CREATE LOGIN sdo WITH PASSWORD = 'sdo', CHECK_POLICY = OFF, DEFAULT_DATABASE = [intel_sdo];
+CREATE LOGIN sdo WITH PASSWORD = 'sdo', CHECK_POLICY = OFF, DEFAULT_DATABASE = [sdo];
 GO
 
-USE [intel_sdo]
+USE [sdo]
 GO
 
 CREATE USER sdo FOR LOGIN sdo;

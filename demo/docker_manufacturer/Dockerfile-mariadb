@@ -1,0 +1,13 @@
+# Copyright 2020 Intel Corporation
+# SPDX-License-Identifier: Apache 2.0
+
+FROM mariadb:bionic
+
+# Files are renamed because they are executed in alphabetical order.
+# The "create" files must be executed first because they create the
+# tables.  The "config" files are executed next.
+COPY mt_create.sql /docker-entrypoint-initdb.d/
+COPY rt_create.sql /docker-entrypoint-initdb.d/
+COPY mt_config.sql /docker-entrypoint-initdb.d/y_mt_config.sql
+COPY rt_config.sql /docker-entrypoint-initdb.d/y_rt_config.sql
+HEALTHCHECK --interval=30s --timeout=10s CMD mysql --user=sdo --password=sdo -e 'use sdo; select * from v_rt_customer_public_key;'

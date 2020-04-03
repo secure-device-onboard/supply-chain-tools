@@ -3,11 +3,11 @@
 
 IF NOT EXISTS ( SELECT  *
                 FROM    sys.sysdatabases
-                WHERE   name = N'intel_sdo' )
-    EXEC('CREATE DATABASE [intel_sdo]');
+                WHERE   name = N'sdo' )
+    EXEC('CREATE DATABASE [sdo]');
 GO
 
-USE [intel_sdo]
+USE [sdo]
 GO
 
 

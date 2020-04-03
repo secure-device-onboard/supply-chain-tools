@@ -65,7 +65,7 @@ your database.
 If you will be acting as a *reseller*, run the <code>rt_create.sql</code>
 script to initialize your database.
 
-These scripts will install a schema named <code>intel_sdo</code> which you
+These scripts will install a schema named <code>sdo</code> which you
 must include in your JDBC* connection string, below.
 
 The SDO Supply Chain Tool Enablement Guides contain details about
@@ -79,7 +79,7 @@ these things:
 Place this data in the [Spring Data Java properties][2] to connect the
 web application to the database.  For example:
 
-    spring.datasource.url=jdbc:mariadb://database.example.com:3306/intel_sdo
+    spring.datasource.url=jdbc:mariadb://database.example.com:3306/sdo
     spring.datasource.username=sdo_db_user
     spring.datasource.password=sdo_db_password
 
@@ -210,7 +210,7 @@ Example:
     {
         "connection.databaseProductName":"MySQL",
         "connection.databaseProductVersion":"10.4.7-MariaDB",
-        "connection.url":"jdbc:mariadb://sdodb.example.com:3306/intel_sdo",
+        "connection.url":"jdbc:mariadb://sdodb.example.com:3306/sdo",
         "connection.user":"sdo"
     }
 

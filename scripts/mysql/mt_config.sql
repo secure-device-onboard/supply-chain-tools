@@ -1,7 +1,7 @@
 -- Copyright 2020 Intel Corporation
 -- SPDX-License-Identifier: Apache 2.0
 
-USE `intel_sdo` ;
+USE `sdo` ;
 
 #call mt_add_server_settings(rendezvous info, certificate_validity_period);
 #rendezvous info = specifies the rendezvous server the device will contact during
