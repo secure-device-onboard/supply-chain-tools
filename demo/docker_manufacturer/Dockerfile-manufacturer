@@ -1,0 +1,15 @@
+# Copyright 2020 Intel Corporation
+# SPDX-License-Identifier: Apache 2.0
+
+FROM tomcat:9-jdk11
+
+WORKDIR /usr/local/tomcat
+COPY tomcat-users.xml /usr/local/tomcat/conf/
+COPY settings.xml /usr/local/tomcat/conf/
+RUN rm -rf webapps/*
+COPY manufacturer-webapp*.war /usr/local/tomcat/webapps/ROOT.war
+RUN useradd -ms /bin/bash sdouser
+RUN chown -R sdouser:sdouser /usr/local/tomcat
+HEALTHCHECK --interval=30s --timeout=10s CMD curl -f http://localhost:8080/api/version || exit 1
+USER sdouser
+CMD ["catalina.sh", "run"]

@@ -11,13 +11,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sdo</groupId>
   <artifactId>sct</artifactId>
-  <version>1.7</version>
+  <version>1.8</version>
   <packaging>pom</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.2.RELEASE</version>
+    <version>2.2.6.RELEASE</version>
     <relativePath/>
   </parent>
 
@@ -40,9 +40,12 @@
     <apache-commons-collections.version>4.4</apache-commons-collections.version>
     <apache-commons-validator.version>1.6</apache-commons-validator.version>
     <bouncycastle.version>1.64</bouncycastle.version>
-    <junit-jupiter.version>5.4.2</junit-jupiter.version>
-    <mariadb.version>2.5.3</mariadb.version>
-    <sqlserver.version>7.4.1.jre11</sqlserver.version>
+    <junit-jupiter.version>5.6.1</junit-jupiter.version>
+    <mariadb.version>2.6.0</mariadb.version>
+    <sqlserver.version>8.2.2.jre11</sqlserver.version>
+
+    <demo.manufacturer.dir>./demo/docker_manufacturer/</demo.manufacturer.dir>
+    <demo.reseller.dir>./demo/docker_reseller/</demo.reseller.dir>
   </properties>
 
   <profiles>
@@ -200,6 +203,48 @@
           <goals>
             <goal>check</goal>
           </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-mt-config</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${demo.manufacturer.dir}</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>./scripts/mysql/</directory>
+                      <includes>
+                        <include>mt_create.sql</include>
+                        <include>rt_create.sql</include>
+                      </includes>
+                  </resource>
+                </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${demo.reseller.dir}</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>./scripts/mysql/</directory>
+                      <includes>
+                        <include>rt_create.sql</include>
+                      </includes>
+                  </resource>
+                </resources>
+            </configuration>
           </execution>
         </executions>
       </plugin>

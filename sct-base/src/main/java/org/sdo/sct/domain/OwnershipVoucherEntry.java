@@ -3,6 +3,9 @@
 
 package org.sdo.sct.domain;
 
+import java.nio.ByteBuffer;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.sdo.sct.ResourceBundleHolder;
+import org.sdo.sct.Voucher;
+import org.sdo.sct.VoucherHeader;
 
 /**
  * The JPA Entity containing SDO vouchers.
@@ -52,6 +57,14 @@ public class OwnershipVoucherEntry {
   @JoinColumn(name = "customer_public_key_id")
   private Customer customer;
 
+  /**
+   * The device uuid. The uuid value is derived from
+   * the voucher contents.
+   *
+   */
+  @Column(name = "uuid", length = Limits.DEVICE_UUID_MAXLEN)
+  private String deviceUuid;
+
   public OwnershipVoucherEntry() {
   }
 
@@ -76,6 +89,13 @@ public class OwnershipVoucherEntry {
     this.deviceSerialNo = deviceSerialNo;
     this.voucher = voucher;
     this.customer = customer;
+
+    // set the device uuid from the voucher contents
+    ByteBuffer bb =
+        ByteBuffer.wrap(VoucherHeader.of(Voucher.of(voucher).getOh()).getGuid().getBytes());
+    long high = bb.getLong();
+    long low = bb.getLong();
+    this.deviceUuid = new UUID(high, low).toString();
   }
 
   /**

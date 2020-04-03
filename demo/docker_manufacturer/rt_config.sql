@@ -1,6 +1,3 @@
---  Copyright 2020 Intel Corporation
---  SPDX-License-Identifier: Apache 2.0
-
 #Run this script with the "root" mariadb user.
 
 #The password for each of the users should be a hash of the password.

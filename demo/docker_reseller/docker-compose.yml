@@ -1,0 +1,103 @@
+# Copyright 2020 Intel Corporation
+# SPDX-License-Identifier: Apache 2.0
+
+# This is an example script to demonstrate out-of-box execution of the component.
+# Appropriate security measures with respect to key-store management and 
+# configuration management should be considered while production deployment.
+version: "2.4"
+
+services:
+
+  reseller:
+    build:
+      context: .
+      dockerfile: Dockerfile-reseller
+    image: reseller:1.8
+    container_name: reseller
+    restart: on-failure:5
+    ports:
+      # If you use a different port for the reseller, modify it here as well as in the healthcheck below.
+      - "8080:8080"
+    expose:
+      - "8080"
+    volumes:
+      # Map volume for sharing keys.
+      - ./keys:/keys:ro
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://reseller-mariadb:3306/sdo
+      # This is an example implementation. This should be updated in production deployment.
+      # Modify these variables to reflect your username and password.
+      SPRING_DATASOURCE_USERNAME: sdo
+      SPRING_DATASOURCE_PASSWORD: sdo
+      # This is an example implementation. This should be updated in production deployment.
+      # Modify these parameters to reflect your keystore path and password.
+      # Keys are stored on a shared volume (keys), defined above, on your local hard disk.
+      SDO_KEYSTORE: file:///keys/reseller-keystore.p12
+      SDO_KEYSTORE_PASSWORD: RsrKs@3er
+      # Uncomment and edit proxy configuration if your environment requires proxies.
+      # http_proxy: http://yourProxy.yourCompany.com:80
+      # https_proxy: http://yourProxy.yourCompany.com:443
+      # Change TZ (timezone) to reflect your location.
+      TZ: America/Los_Angeles
+      # CATALINA_OPTS: -D<add any additional tomcat options here, if needed>
+    healthcheck:
+      # Modify port here if it was changed above.
+      test: curl -f http://localhost:8080/api/version || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      reseller-mariadb:
+        condition: service_healthy
+    mem_limit: 500m
+    mem_reservation: 200m
+    cpu_shares: 5
+    pids_limit: 100
+    networks:
+      - reseller_network
+
+  reseller-mariadb:
+    build:
+      context: .
+      dockerfile: Dockerfile-mariadb
+        # Uncomment and edit proxy configuration if your environment requires proxies.
+        # args:
+          # http_proxy: http://yourProxy.yourCompany.com:80
+          # https_proxy: http://yourProxy.yourCompany.com:443
+    image: reseller-mariadb:1.8
+    container_name: reseller-mariadb
+    restart: on-failure:5
+    ports:
+      - "3307:3306"
+    expose:
+      - "3307"
+    environment:
+      MYSQL_DATABASE: sdo
+      # This is an example implementation. This should be updated in production deployment.
+      # Modify these variables to reflect your configuration. Update the same in 
+      # the healthcheck.
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: sdo
+      MYSQL_PASSWORD: sdo
+      # Uncomment and edit proxy configuration if your environment requires proxies.
+      # http_proxy: http://yourProxy.yourCompany.com:80
+      # https_proxy: http://yourProxy.yourCompany.com:443
+      # Change TZ (timezone) to reflect your location.
+      TZ: America/Los_Angeles
+    healthcheck:
+      # Modify user/password to match your configuration. Update the same in Docker-mariadb.
+      test: mysql --user=sdo --password=sdo -e 'use sdo; select * from v_rt_customer_public_key;'
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    mem_limit: 300m
+    mem_reservation: 100m
+    cpu_shares: 5
+    pids_limit: 100
+    networks:
+      - reseller_network
+
+networks:
+  reseller_network:
+    driver: bridge
+    name: reseller_network
