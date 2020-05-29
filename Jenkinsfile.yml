@@ -12,3 +12,4 @@ node('ubuntu18.04-OnDemand'){
     sh 'mvn clean install'
   }
 }
+
