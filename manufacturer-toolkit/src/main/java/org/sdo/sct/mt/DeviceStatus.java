@@ -4,7 +4,7 @@
 package org.sdo.sct.mt;
 
 /**
- * Values used in sdo.mt_device_state.status database column.
+ * Values used in intel_sdo.mt_device_state.status database column.
  */
 class DeviceStatus {
   public static final int OK = 1;
