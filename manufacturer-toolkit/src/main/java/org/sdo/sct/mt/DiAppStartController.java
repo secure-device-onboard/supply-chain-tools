@@ -52,6 +52,9 @@ class DiAppStartController {
   private static ResourceBundleHolder resourceBundleHolder_ =
       new ResourceBundleHolder(DiAppStartController.class.getName());
   private final CertPathService certPathService;
+  private final OnDieCertPath onDieCertPathService;
+  private final OnDieCache onDieCertCache;
+  private final OnDieSignatureValidator onDieSignatureValidator;
   private final DeviceStateRepo deviceStateRepo;
   private final ServerSettingsRepo serverSettingsRepo;
   private final KeyFinder keyFinder;
@@ -59,11 +62,17 @@ class DiAppStartController {
   @Autowired
   DiAppStartController(
       final CertPathService certPathService,
+      final OnDieCertPath onDieCertPathService,
+      final OnDieCache onDieCertCache,
+      final OnDieSignatureValidator onDieSignatureValidator,
       final DeviceStateRepo deviceStateRepo,
       final ServerSettingsRepo serverSettingsRepo,
       final KeyFinder keyFinder) {
 
     this.certPathService = certPathService;
+    this.onDieCertPathService = onDieCertPathService;
+    this.onDieCertCache = onDieCertCache;
+    this.onDieSignatureValidator = onDieSignatureValidator;
     this.deviceStateRepo = deviceStateRepo;
     this.serverSettingsRepo = serverSettingsRepo;
     this.keyFinder = keyFinder;
@@ -154,6 +163,24 @@ class DiAppStartController {
       digest.update(dc.getBytes(StandardCharsets.US_ASCII));
       hdc = digest.doFinal();
 
+    } else if (null != m.getOnDieCertChain()) {
+      // build dc for DAL ECDSA device
+      final CertPath certPath =
+          onDieCertPathService.buildCertPath(m.getOnDieCertChain(), this.onDieCertCache);
+
+      // validate test signature against certpath
+      if (!onDieSignatureValidator.validate(
+          certPath,
+          m.getSerialNumber().getBytes(),
+          Base64.getDecoder().decode(m.getOnDieTestSignature()))) {
+        throw new ResponseStatusException(
+          HttpStatus.INTERNAL_SERVER_ERROR, "OnDie test signature failure.");
+      }
+      dc = CertPathCodec.encode(certPath);
+
+      digest.reset();
+      digest.update(dc.getBytes(StandardCharsets.US_ASCII));
+      hdc = digest.doFinal();
     } else {
       dc = null;
       hdc = null;
