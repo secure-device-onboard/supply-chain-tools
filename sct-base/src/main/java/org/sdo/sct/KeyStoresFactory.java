@@ -48,7 +48,7 @@ public class KeyStoresFactory extends AbstractFactoryBean<KeyStores> {
   @Autowired
   public KeyStoresFactory(
       final PasswordCallbackFunction pwCallback,
-      @Value("${sdo.keystore:sdo.keystore}") final Resource resource) {
+      @Value("${sdo.keystore:file://C:/xSDO/sdo.p12}") final Resource resource) {
 
     this.pwCallback = pwCallback;
     this.resource = resource;
