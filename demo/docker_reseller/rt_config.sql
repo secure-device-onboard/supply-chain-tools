@@ -22,33 +22,32 @@ GRANT ALL PRIVILEGES ON sdo.* To 'sdo_admin'@'%';
 GRANT SELECT ON sdo.* To 'sdo_user'@'%';
 
 
-#call rt_add_customer_public_key(owner id, owner public key)
-#owner id = specified the name/id of the owner.
-#owner public key = specifies the public key of the owner to which the devices will
-#be assigned to.
-#sample owner with owner id as owner_ecdsa_256 along with a sample ECDSA-256 
-#public key intended to be used for demo purposes.
+#call rt_add_customer_public_key(ownerId, +[keyId:publicKey])
+#ownerId = specified the name/id of the owner.
+#+[keyId:publicKey] = specifies one or more mappings of key type/algorithm and associated public key as an array
+#keyId = key type/algorithm as key identifier, and
+#publicKey = public key of the owner in PEM format
+#for example, 'keyId1:publicKey1,keyId2:publicKey2,keyId3:publicKey3'
+
+#sample owner with ownerId as owner along with sample PEM-formatted public keys of key types
+#ECDSA-256, ECDSA-384 and RSA-2048, intended to be used for demo purposes.
 #Replace the owner id and owner keys with your own for production deployment.
-call rt_add_customer_public_key('owner_ecdsa_256', '-----BEGIN PUBLIC KEY-----
+call rt_add_customer_public_key(
+'owner',
+'ec_256:
+-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEWVUE2G0GLy8scmAOyQyhcBiF/fSU
 d3i/Og7XDShiJb2IsbCZSRqt1ek15IbeCI5z7BHea2GZGgaK63cyD15gNA==
 -----END PUBLIC KEY-----
-');
-
-#sample owner with owner id as owner_ecdsa_384 along with a sample ECDSA-384 
-#public key intended to be used for demo purposes.
-#Replace the owner id and owner keys with your own for production deployment.
-call rt_add_customer_public_key('owner_ecdsa_384', '-----BEGIN PUBLIC KEY-----
+,
+ec_384:-----BEGIN PUBLIC KEY-----
 MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE4RFfGVQdojLIODXnUT6NqB6KpmmPV2Rl
 aVWXzdDef83f/JT+/XLPcpAZVoS++pwZpDoCkRU+E2FqKFdKDDD4g7obfqWd87z1
 EtjdVaI1qiagqaSlkul2oQPBAujpIaHZ
 -----END PUBLIC KEY-----
-');
-
-#sample owner with owner id as owner_rsa_2048 along with a sample RSA-2048 
-#public key intended to be used for demo purposes.
-#Replace the owner id and owner keys with your own for production deployment.
-call rt_add_customer_public_key('owner_rsa_2048', '-----BEGIN PUBLIC KEY-----
+,
+rsa_2048:
+-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtE58Wx9S4BWTNdrTmj3+
 kJXNKuOAk3sgQwvF0Y8uXo3/ECeS/hj5SDmxG5fSnBlmGVKJwGV1bTVERDZ4uh4a
 W1fWMmoUd4xcxun4N4B9+WDSQlX/+Rd3wBLEkKQfNr7lU9ZitfaGkBKxs23Y0GCY
