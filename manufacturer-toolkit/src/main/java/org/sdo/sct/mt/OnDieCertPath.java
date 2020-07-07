@@ -35,7 +35,6 @@ public class OnDieCertPath {
    */
   @Autowired
   public OnDieCertPath() throws Exception {
-    LoggerFactory.getLogger(getClass()).debug("OnDieCertPathService");
     certFactory = CertificateFactory.getInstance("X509", BouncyCastleSingleton.INSTANCE);
   }
 
