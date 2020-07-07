@@ -172,7 +172,8 @@ class DiAppStartController {
       if (!onDieSignatureValidator.validate(
           certPath,
           m.getSerialNumber().getBytes(),
-          Base64.getDecoder().decode(m.getOnDieTestSignature()))) {
+          Base64.getDecoder().decode(m.getOnDieTestSignature()),
+          true)) {
         throw new ResponseStatusException(
           HttpStatus.INTERNAL_SERVER_ERROR, "OnDie test signature failure.");
       }
