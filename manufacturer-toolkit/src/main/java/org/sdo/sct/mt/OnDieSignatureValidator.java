@@ -15,6 +15,9 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.security.interfaces.ECPublicKey;
+import java.security.spec.ECParameterSpec;
+import java.security.spec.ECPoint;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,17 +52,19 @@ public class OnDieSignatureValidator {
    * @param certChain certChain
    * @param signedData signedData
    * @param signature signature
+   * @param checkRevocations set to false only for debug/testing purposes
    * @return boolean indicating if signature is valid.
    * @throws Exception when error.
    */
   public boolean validate(CertPath certChain,
                           byte[] signedData,
-                          byte[] signature) throws Exception {
+                          byte[] signature,
+                          boolean checkRevocations) throws Exception {
 
     List<Certificate> certificateList = (List<Certificate>) certChain.getCertificates();
 
     // Check revocations first.
-    if (!checkRevocations(certificateList)) {
+    if (checkRevocations && !checkRevocations(certificateList)) {
       return false;
     }
 
@@ -69,7 +74,7 @@ public class OnDieSignatureValidator {
       // adjust the signed data
       // data-to-verify format is: [ task-info | nonce (optional) | data ]
       // First 36 bytes of signature is the taskinfo. This value must be prepended
-      // to the signedDat
+      // to the signed data
       ByteArrayOutputStream adjSignedData = new ByteArrayOutputStream();
       adjSignedData.write(Arrays.copyOfRange(signature, 0, taskInfo.length));
       adjSignedData.write(signedData);
@@ -143,8 +148,11 @@ public class OnDieSignatureValidator {
           for (int j = 0; j < generalNames.length; j++) {
             byte[] crlBytes = onDieCache.getCertOrCrl(generalNames[j].getName().toString());
             if (crlBytes == null) {
-              LoggerFactory.getLogger(this.getClass()).warn("CRL not found in cache for: "
-                  + generalNames[j].getName().toString());
+              LoggerFactory.getLogger(getClass()).error(
+                  "CRL ({}) not found in cache for cert: {}",
+                  generalNames[j].getName().toString(),
+                  cert.getIssuerX500Principal().getName());
+              return false;
             } else {
               CRL crl = certificateFactory.generateCRL(new ByteArrayInputStream(crlBytes));
               if (crl.isRevoked(cert)) {
