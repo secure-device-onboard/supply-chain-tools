@@ -265,6 +265,47 @@ generated vouchers to the entities you identified in the previous step.
 
 - Use the toolkit REST API to download the generated vouchers.
 
+## Configuring OnDie ECDSA
+
+Set the following Java properties in your servlet container. In typical environments, only 
+sdo.ondiecache.cachedir and sdo.ondiecache.autoupdate are used.
+
+- <code>sdo.ondiecache.cachedir</code>
+
+Set this to the file: Uniform Resource Identifier (URI) of the directory to contain cache files.
+
+Example:
+
+    sdo.ondiecache.cachedir=file:///C:/SDO/ondiecache
+
+- <code>sdo.ondiecache.autoupdate</code>
+
+Set this to true or false to enable autoupdate of cachedir from urlsources.
+Default: false
+
+Example:
+
+    sdo.ondiecache.autoupdate=true
+
+- <code>sdo.ondiecache.urlsources</code>
+
+Set to list of urls containing cert and CRL files for OnDie ECDSA. This should only be needed when
+debugging or working with pre-production hardware. In production environments, 
+Default: https://tsci.intel.com/content/OnDieCA/certs/,https://tsci.intel.com/content/OnDieCA/crls/
+
+Example:
+
+    sdo.ondiecache.urlsources=https://tsci.intel.com/content/OnDieCA/certs/,https://tsci.intel.com/content/OnDieCA/crls/
+
+- <code>sdo.ondiecache.revocations</code>
+
+Set this to true or false to enable revocation checking of OnDie ECDSA signatures. This should not be
+used in production environments and only used when debugging or working with pre-production hardware.
+
+Example:
+
+    sdo.ondiecache.revocations=true
+
 
 [1]: http://tomcat.apache.org
 [2]: https://spring.io/guides/gs/accessing-data-mysql/#_create_the_application_properties_file
