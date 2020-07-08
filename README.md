@@ -55,9 +55,9 @@ external backups of generated SDO vouchers.
 The SDO Toolkits were tested with [MariaDB* server][9].
 
 Two scripts are provided to initialize the database:
-[mt_create.sql](manufacturer-toolkit/database/mysql/mt_create.sql)
+[mt_create.sql](scripts/mysql/mt_create.sql)
 and
-[rt_create.sql](reseller-toolkit/database/mysql/rt_create.sql).
+[rt_create.sql](scripts/mysql/rt_create.sql).
 
 If you will be acting as a *manufacturer*, run both scripts to initialize
 your database.
@@ -120,7 +120,7 @@ backup files.  The names of these files will be printed to the console.
 Make sure to back these files up to a secure location in case you need
 to recreate the key in future.
 
-Note: The ykinit script will reformat your YubiKey security key before it stores the new key.
+**Note:** The ykinit script will reformat your YubiKey security key before it stores the new key.
 Don't use this script on YubiKey security keys that contain important data.
 It is strongly suggested that you use the [YubiKey Manager tool][5]
 to change the PIN on your YubiKey security key after it has been initialized.
@@ -142,7 +142,7 @@ Example:
 
 Set this to the PIN or password of your PKCS#11 keystores.
 
-Examples:
+Example:
 
     sdo.keystore.password=changeit
 
