@@ -50,7 +50,7 @@ public class OnDieCache {
    * @param sourceUrlList sourceUrlList
    */
   @Autowired
-  public OnDieCache(@Value("${sdo.ondiecache.cachedir:null}") final String cacheDir,
+  public OnDieCache(@Value("${sdo.ondiecache.cachedir:#{null}}") final String cacheDir,
                     @Value("${sdo.ondiecache.autoupdate:false}") final boolean autoUpdate,
                     @Value("${sdo.ondiecache.urlsources:}") final String sourceUrlList)
       throws Exception {
