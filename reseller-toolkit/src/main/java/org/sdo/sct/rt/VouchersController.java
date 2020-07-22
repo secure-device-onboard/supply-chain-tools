@@ -15,8 +15,11 @@ import java.security.Signature;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.openssl.PEMParser;
 import org.sdo.sct.BouncyCastleSingleton;
@@ -66,23 +69,32 @@ class VouchersController {
       InvalidKeySpecException, IOException, NoSuchAlgorithmException {
 
     final String pem = customer.getKey();
-    if (null != pem) {
-      try (PEMParser pemParser = new PEMParser(new StringReader(pem))) {
-        for (Object o = pemParser.readObject(); null != o; o = pemParser.readObject()) {
-          if (o instanceof SubjectPublicKeyInfo) {
-            SubjectPublicKeyInfo subjectPublicKeyInfo = (SubjectPublicKeyInfo) o;
-            final KeyFactory keyFactory = KeyFactory.getInstance(
-                subjectPublicKeyInfo.getAlgorithm().getAlgorithm().toString(),
-                BouncyCastleSingleton.INSTANCE);
-            final X509EncodedKeySpec subjectKeySpec =
-                new X509EncodedKeySpec(subjectPublicKeyInfo.getEncoded());
-            PublicKey key = keyFactory.generatePublic(subjectKeySpec);
-            if (type == KeyUtils.toType(key)) {
-              return key;
-            }
-          } // SubjectPublicKeyInfo?
-        } // foreach PEM object
-      } // try with PEMParser
+    if (null != pem && !pem.isBlank()) {
+      final Map<String, String> keyMap =
+          Arrays.stream(pem.split(",")).map(entry -> entry.split(":"))
+              .collect(Collectors.toMap(entry -> entry[0], entry -> entry[1]));
+      for (Map.Entry<String, String> keyEntry : keyMap.entrySet()) {
+        // remove the common escape sequences /r, /t and leading/trailing whitespaces from the PEM
+        // formatted public key.
+        final String publicKeyAsPem =
+            keyEntry.getValue().replaceAll("\t", "").replaceAll("\r", "").trim();
+        try (PEMParser pemParser = new PEMParser(new StringReader(publicKeyAsPem))) {
+          for (Object o = pemParser.readObject(); null != o; o = pemParser.readObject()) {
+            if (o instanceof SubjectPublicKeyInfo) {
+              SubjectPublicKeyInfo subjectPublicKeyInfo = (SubjectPublicKeyInfo) o;
+              final KeyFactory keyFactory = KeyFactory.getInstance(
+                  subjectPublicKeyInfo.getAlgorithm().getAlgorithm().toString(),
+                  BouncyCastleSingleton.INSTANCE);
+              final X509EncodedKeySpec subjectKeySpec =
+                  new X509EncodedKeySpec(subjectPublicKeyInfo.getEncoded());
+              PublicKey key = keyFactory.generatePublic(subjectKeySpec);
+              if (type == KeyUtils.toType(key)) {
+                return key;
+              }
+            } // SubjectPublicKeyInfo?
+          } // foreach PEM object
+        } // try with PEMParser
+      }
 
       String format = resourceBundleHolder_.get().getString("key.wrong.type");
       throw new IllegalArgumentException(MessageFormat.format(format, type));
