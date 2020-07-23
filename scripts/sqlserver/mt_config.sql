@@ -13,11 +13,12 @@ GO
 --certificate_validity_period is specified according to ISO 8601 duration value
 --duration format is: PnYnMnDTnHnMnS
 --example duration: 30 days is specified as P30D
+--2 years is specified as P2Y
 --
 --Default: update as needed for your environment
 
 exec [dbo].mt_add_server_settings 
 	@rendezvous_info = 'http://sdo-sbx.trustedservices.intel.com:80',
-    @certificate_validity_period = 'P30D';
+    @certificate_validity_period = 'P2Y';
 GO
 
