@@ -53,10 +53,7 @@ node('ubuntu18.04-OnDemand'){
       print "Copy SCT artifacts to sdo-test/binaries folder"
       sh '''
         cp -r demo/* sdo-test/binaries/supply-chain-tools/
-        mv sdo-test/binaries/iot-platform-sdk/ocs/ocsfs*.war sdo-test/binaries/iot-platform-sdk/ocs/ocsfs-.war
-        mv sdo-test/binaries/iot-platform-sdk/ops/ops*.war sdo-test/binaries/iot-platform-sdk/ops/ops-.war
-        mv sdo-test/binaries/iot-platform-sdk/to0scheduler/to0scheduler-*.war sdo-test/binaries/iot-platform-sdk/to0scheduler/to0scheduler-.war
-      '''
+       '''
       print "Create tomcat containers running manufacturer & db"
       sh '''
         cd sdo-test/binaries/supply-chain-tools/docker_manufacturer/
