@@ -221,6 +221,21 @@ class DITest {
     }
 
     @Bean
+    OnDieCache onDieCertCache() throws Exception {
+      return new OnDieCache(null, false, null);
+    }
+
+    @Bean
+    OnDieCertPath onDieCertPathService() throws Exception {
+      return new OnDieCertPath();
+    }
+
+    @Bean
+    OnDieSignatureValidator onDieSignatureValidator() throws Exception {
+      return new OnDieSignatureValidator(onDieCertCache(), false);
+    }
+
+    @Bean
     CertificateValidityPeriodFactory certificateValidityPeriodFactory() {
       return () -> Period.ofDays(1);
     }
@@ -229,6 +244,9 @@ class DITest {
     DiAppStartController diAppStartController() throws Exception {
       return new DiAppStartController(
         certPathService(),
+        onDieCertPathService(),
+        onDieCertCache(),
+        onDieSignatureValidator(),
         deviceStateRepo,
         serverSettingsRepo,
         new KeyFinder(keyStores(), passwordCallbackFunction()));
