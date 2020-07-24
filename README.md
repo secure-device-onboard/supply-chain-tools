@@ -267,8 +267,16 @@ generated vouchers to the entities you identified in the previous step.
 
 ## Configuring OnDie ECDSA
 
-Set the following Java properties in your servlet container. In typical environments, only 
+Set the following Java properties in your servlet container. In typical environments, only
 sdo.ondiecache.cachedir and sdo.ondiecache.autoupdate are used.
+The cachedir is used to store CRL and cert files and can be populated by either setting autoupdate to true
+or by running the provided script (onDieCache.py) to load the directory with the files from the cloud.
+If autoupdate is set to true the owner application will load the cache upon startup. However, if operating
+in OnPrem mode then this is not possible so the script should be used. To run the script, python must be installed.
+Invoke as follows: python onDieCache.py CACHEDIR
+where CACHEDIR = target location to store CRL and cert files. Typically, this will match the value of sdo.ondiecache.cachedir.
+However, it is also possible to run the script on a different host and then copy the downloaded files into sdo.ondiecache.cachedir.
+The exact setup will vary depending on the runtime environment and user needs.
 
 - <code>sdo.ondiecache.cachedir</code>
 
