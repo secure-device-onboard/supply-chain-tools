@@ -55,6 +55,7 @@ The manufacturer will not start if the keystore is not present.
 
 ### Modify docker-compose.yml configuration as needed
 Review the docker-compose.yml file and follow instructions in the file to customize for your environment.
+Edit the application's properties stored in manufacturer-mariadb.env and manufacturer.env, as needed.
 
 ### Modify settings.xml configuration as needed
 Edit settings.xml file and add your user and password.
