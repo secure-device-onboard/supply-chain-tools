@@ -1,6 +1,4 @@
-﻿## License ##
-
-License agreement is described in Intel OBL Internal Use License.pdf - main directory.
+﻿**NOTE**: Supply Chain Tools demo docker scripts are provided solely to demonstrate the interoperation of Supply Chain Tools with an example database and configuration.  _These scripts are not recommended for use in any production capacity._  Appropriate security measures with respect to key-store management and configuration management should be considered while performing production deployment of any Secure Device Onboard component.
 
 # Reseller Toolkit Docker configuration
 
