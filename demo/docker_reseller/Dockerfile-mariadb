@@ -3,9 +3,15 @@
 
 FROM mariadb:bionic
 
+ENV MYSQL_DATABASE ${MYSQL_DATABASE}
+ENV MYSQL_ROOT_PASSWORD ${MYSQL_ROOT_PASSWORD}
+ENV MYSQL_USER ${MYSQL_USER}
+ENV MYSQL_PASSWORD ${MYSQL_PASSWORD}
+ENV TZ ${TZ}
+
 # Files are renamed because they are executed in alphabetical order.
 # The "create" files must be executed first because they create the
 # tables.  The "config" files are executed next.
 COPY rt_create.sql /docker-entrypoint-initdb.d/
 COPY rt_config.sql /docker-entrypoint-initdb.d/y_rt_config.sql
-HEALTHCHECK --interval=30s --timeout=10s CMD mysql --user=sdo --password=sdo -e 'use sdo; select * from v_rt_customer_public_key;'
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 CMD mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e 'show databases;'
