@@ -64,30 +64,30 @@ node('ubuntu18.04-OnDemand'){
       print "Supply-chain-tools smoke Tests with Onprem-RV, client-SDk Device"
       sh '''
         cd sdo-test
-        mvn clean test -Dgroups=CdeviceOnPremTests
+        mvn clean verify -Dgroups=CdeviceOnPremTests
       '''
       print "Supply-chain-tools smoke Tests with PRI-RV and Device, IOT Owner"
       sh '''
         cd sdo-test
         mkdir voucher
-        mvn clean test -Dgroups=docker_oc_sct_crirv_smoketest
+        mvn clean verify -Dgroups=docker_oc_sct_crirv_smoketest
       '''
       print "Run SCT API tests"
       sh '''
         cd sdo-test
-        mvn clean test -Dgroups=SctApiTests
+        mvn clean verify -Dgroups=SctApiTests
       '''
       print "RUN SCT CLI tests"
       sh '''
         mv sdo-test/binaries/supply-chain-tools/docker_manufacturer/manufacturer-webapp*.war sdo-test/binaries/supply-chain-tools/docker_manufacturer/manufacturer-webapp.war
         cd sdo-test
-        mvn clean test -Dgroups=SctCliTests
+        mvn clean verify -Dgroups=SctCliTests
       '''
       }
       print "Supply-chain-tools smoke Tests to onboard PRI"
       sh '''
         cd sdo-test
-        mvn clean test -Dgroups=CriDeviceSmokeTests
+        mvn clean verify -Dgroups=CriDeviceSmokeTests
       '''
     } finally {
         print "stop tomcat containers running manufacturer & db"
