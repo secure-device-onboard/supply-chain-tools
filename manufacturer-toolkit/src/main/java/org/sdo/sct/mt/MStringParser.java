@@ -39,7 +39,7 @@ class MStringParser {
 
     String keyTypeConstraint;
     String serialNumber;
-    String deviceInfo;
+    String deviceInfo = "";
     String token4 = null;
     String token5 = null;
 
@@ -64,7 +64,9 @@ class MStringParser {
       // the first three tokens are common for all devices
       keyTypeConstraint = scanner.next();
       serialNumber = scanner.next();
-      deviceInfo = scanner.next();
+      if (scanner.hasNext()) {
+        deviceInfo = scanner.next();
+      }
 
       if (scanner.hasNext()) {
         token4 = scanner.next();
