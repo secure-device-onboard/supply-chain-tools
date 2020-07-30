@@ -78,7 +78,7 @@ class MStringParserTest {
   @DisplayName("getMstring contains too few field separators")
   void testTooFewFieldSeparators() throws Exception {
     MStringParser msp = new MStringParser();
-    String m = Base64.getEncoder().encodeToString("test\00test".getBytes());
+    String m = Base64.getEncoder().encodeToString("test\00".getBytes());
     MStringParser.ParseResult pr = msp.parse(m);
 
     Assertions.assertEquals(KeyType.RSA2048RESTR, pr.getKeyTypeConstraint());
