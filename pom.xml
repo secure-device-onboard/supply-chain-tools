@@ -223,6 +223,7 @@
                     <directory>./scripts/mysql/</directory>
                       <includes>
                         <include>mt_create.sql</include>
+                        <include>mt_config.sql</include>
                         <include>rt_create.sql</include>
                       </includes>
                   </resource>
