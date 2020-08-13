@@ -26,6 +26,7 @@ services:
       - "8039"
     volumes:
       - ./keys:/keys:ro
+      - ./ondiecache:/ondiecache
     env_file:
       - ./manufacturer.env
     depends_on:

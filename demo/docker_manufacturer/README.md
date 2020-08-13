@@ -47,6 +47,12 @@ This is an example implementation for demo purposes and should be updated in pro
 Modify mt_config.sql and rt_config.sql following instructions given in the respective files to customize for your environment,
 and replace the sample keystore.
 
+### OnDie ECDSA configuration
+
+If OnDie ECDSA support is needed, run the script located at <sdo-supply-chain-tools>/scripts/onDieCache.py,
+to populate the directory <sdo-supply-chain-tools-docker>/ondiecache with OnDie ECDSA certs and crls.
+Refer to the README located at <sdo-supply-chain-tools> for more information.
+
 ### Create Java keystore file
 
 See instructions in the Secure Device Onboard Keystore Setup Guide. Once the file is created, update 
