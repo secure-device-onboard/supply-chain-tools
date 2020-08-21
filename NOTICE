@@ -1,14 +1,14 @@
+This document contains the license agreements for third-party software
+used by the Secure Device Onboard Supply Chain Tools.
+
 -----------------------------------------------------------------------
 The following components are used for development and test under the BSD
 3-clause "New" or "Revised" License:
 
 Hamcrest
------------------------------------------------------------------------
-
-BSD License
-
 Copyright (c) 2000-2015 www.hamcrest.org
 All rights reserved.
+
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -37,19 +37,19 @@ DAMAGE.
 The following components are used under The MIT License:
 
 Legion of the Bouncy Castle:
-
 Copyright (c) 2000 - 2020 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 slf4j:
-
 Copyright (c) 2004-2017 QOS.ch
 All rights reserved.
+
+Mockito:
+Copyright (c) 2007 Mockito contributors
+
+MS SQL Server JDBC Driver
+Copyright(c) 2019 Microsoft Corporation
+All rights reserved.
+
 
 Permission is hereby granted, free  of charge, to any person obtaining
 a  copy  of this  software  and  associated  documentation files  (the
@@ -70,52 +70,12 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Mockito:
-
-The MIT License
-
-Copyright (c) 2007 Mockito contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-MS SQL Server JDBC Driver :
-
-Copyright(c) 2019 Microsoft Corporation
-All rights reserved.
-
-MIT License
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the "Software"),
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
-and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions :
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-
 -----------------------------------------------------------------------------------
 The following components are used under the Sun GPL With Classpath Exception v2.0:
 
 openjdk
-----------------------------------------------------------------------------------
+
+
 The GNU General Public License (GPL) Version 2, June 1991
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor
@@ -484,7 +444,7 @@ Objenesis
 Powermock
 Spring Framework
 
--------------------------------------------------------------------------------
+
 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -691,7 +651,7 @@ Apache License
 The followig are used under the GNU LESSER GENERAL PUBLIC LICENSE Version 2.1
 
 MariaDB Client Library for Java Applications
----------------------------------------------------------------------------------
+
 
 GNU LESSER GENERAL PUBLIC LICENSE
                        Version 2.1, February 1999
