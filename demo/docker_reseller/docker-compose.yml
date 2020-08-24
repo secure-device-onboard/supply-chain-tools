@@ -16,7 +16,7 @@ services:
       # args:
         # http_proxy: http://yourProxy.yourCompany.com:80
         # https_proxy: http://yourProxy.yourCompany.com:443
-    image: reseller:1.9-SNAPSHOT
+    image: reseller:1.9
     container_name: reseller
     restart: on-failure:5
     ports:
@@ -47,7 +47,7 @@ services:
       # args:
         # http_proxy: http://yourProxy.yourCompany.com:80
         # https_proxy: http://yourProxy.yourCompany.com:443
-    image: reseller-mariadb:1.9-SNAPSHOT
+    image: reseller-mariadb:1.9
     container_name: reseller-mariadb
     restart: on-failure:5
     ports:
