@@ -17,6 +17,10 @@ Resellers use the <code>reseller-webapp WAR</code>.
 To build the toolkits go to the supply-chain-tools directory and run:
 mvn install
 
+Note: towards the end of the build you may notice a couple of error messages. These occur
+due to cleanup of unit test artifacts and do not indicate any issue with the build itself.
+You can safely ignore these messages.
+
 ## Required Software
 
 You will need some supporting software installed to use the SDO
