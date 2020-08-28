@@ -17,6 +17,10 @@ Resellers use the <code>reseller-webapp WAR</code>.
 To build the toolkits go to the supply-chain-tools directory and run:
 mvn install
 
+***Note:*** Towards the end of the build you may notice a couple of error messages. These occur
+due to cleanup of unit test artifacts and do not indicate any issue with the build itself.
+You can safely ignore these messages.
+
 ## Required Software
 
 You will need some supporting software installed to use the SDO
@@ -33,7 +37,8 @@ servlet container like [Apache Tomcat*][1].
 For testing, the WAR files are also executable via the [Spring Boot* platform][7].
 
 The SDO Supply Chain tools are configured via Java properties.
-In this README file, there are some properties which need to be updated based on servlet container mechanism. Your choice of servlet container will dictate how you set these properties.
+In this README file, there are some properties which need to be updated based on servlet container
+mechanism. Your choice of servlet container will dictate how you set these properties.
 See your servlet container's documentation for specific instructions.
 
 Common mechanisms include the following:
@@ -83,7 +88,7 @@ web application to the database.  For example:
     spring.datasource.username=sdo_db_user
     spring.datasource.password=sdo_db_password
 
-### Public key cryptography standards (PKCS#11) Smart Card Library
+### Public Key Cryptography Standards (PKCS#11) Smart Card Library
 
 If you will be using PKCS#11 hardware keystores, install a PKCS#11 smart card
 library on your web server.
@@ -120,7 +125,7 @@ backup files.  The names of these files will be printed to the console.
 Make sure to back these files up to a secure location in case you need
 to recreate the key in future.
 
-**Note:** The ykinit script will reformat your YubiKey security key before it stores the new key.
+***Note:*** The ykinit script will reformat your YubiKey security key before it stores the new key.
 Don't use this script on YubiKey security keys that contain important data.
 It is strongly suggested that you use the [YubiKey Manager tool][5]
 to change the PIN on your YubiKey security key after it has been initialized.
