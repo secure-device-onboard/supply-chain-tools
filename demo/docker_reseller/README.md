@@ -21,7 +21,7 @@
 The following notations is used in this document:
 
 * `<sdo-supply-chain-tools>`: supply-chain-tools
-* `<sdo-supply-chain-tools-docker>`: <sdo-supply-chain-tools>/demo/docker_reseller
+* `<sdo-supply-chain-tools-docker>`: \<sdo-supply-chain-tools>/demo/docker_reseller
 
 Build the toolkit using the command:
 
@@ -30,7 +30,7 @@ $ cd <sdo-supply-chain-tools>
 $ mvn package
 ```
 This copies the reseller-webapp*.war, and rt_create.sql into
-<sdo-supply-chain-tools-docker>. Following files should be present after build.
+\<sdo-supply-chain-tools-docker>. Following files should be present after build.
 
 1. reseller-webapp*.war
 2. rt_create.sql
@@ -38,8 +38,8 @@ This copies the reseller-webapp*.war, and rt_create.sql into
 
 ### Default sample configurations
 
-A docker-compose.yml with default configuration is present in the directory <sdo-supply-chain-tools-docker>.
-A sample keystore is provided at <sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12,
+A docker-compose.yml with default configuration is present in the directory \<sdo-supply-chain-tools-docker>.
+A sample keystore is provided at \<sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12,
 along with a set of default configurations at rt_config.sql.
 This is an example implementation for demo purposes and should be updated in production deployment.
 Modify rt_config.sql following instructions given in the respective files to customize for your environment,
@@ -48,7 +48,7 @@ and replace the sample keystore.
 ### Create Java keystore file
 
 See instructions in the Secure Device Onboard Keystore Setup Guide.  Once the file is created, update 
-docker-compose.yml to reflect the file name, path and password. The default configured is /keys/reseller-keystore.p12.
+docker-compose.yml to reflect the file name, path and password. The default configured is \<sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12.
 The reseller will not start if the keystore is not present.
 
 ### Modify docker-compose.yml configuration as needed
