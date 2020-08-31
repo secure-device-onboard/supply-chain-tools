@@ -55,7 +55,7 @@ Refer to the README located at <sdo-supply-chain-tools> for more information.
 
 ### Create Java keystore file
 
-See instructions in the Secure Device Onboard Keystore Setup Guide. Once the file is created, update 
+See instructions in the Secure Device Onboard [Keystore Setup Guide](https://secure-device-onboard.github.io/docs/latest/supply-chain-tools/keystore-guide/). Once the file is created, update 
 docker-compose.yml to reflect the file name, path and password.  The default configured is /keys/manufacturer-keystore.p12.
 The manufacturer will not start if the keystore is not present.
 
