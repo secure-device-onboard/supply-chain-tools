@@ -102,7 +102,7 @@ in Java keystores to generate cyptographic signatures.
 You'll need at least one.  Hardware keystores are encouraged,
 but software keystores are also supported.
 
-### If you're using PKCS#11 hardware keys:
+### If you're using PKCS#11 Hardware Keys:
 
 The SDO Toolkits were tested with [YubiKey* 5 security keys][4].
 
@@ -151,7 +151,7 @@ Example:
 
     sdo.keystore.password=changeit
 
-### If you're using a PKCS#12 software keystore:
+### If you're using a PKCS#12 Software Keystore:
 
 A PKCS#12 software keystore may be used instead of PKCS#11 hardware keys.
 
