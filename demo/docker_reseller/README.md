@@ -1,8 +1,8 @@
-﻿**NOTE**: Supply Chain Tools demo docker scripts are provided solely to demonstrate the interoperation of Supply Chain Tools with an example database and configuration.  _These scripts are not recommended for use in any production capacity._  Appropriate security measures with respect to key-store management and configuration management should be considered while performing production deployment of any Secure Device Onboard component.
+﻿***NOTE***: Supply Chain Tools demo docker scripts are provided solely to demonstrate the interoperation of Supply Chain Tools with an example database and configuration.  _These scripts are not recommended for use in any production capacity._  Appropriate security measures with respect to key-store management and configuration management should be considered while performing production deployment of any Secure Device Onboard component.
 
-# Reseller Toolkit Docker configuration
+# Reseller Toolkit Docker Configuration
 
-## System requirements
+## System Requirements
 
 * Operating system: **Linux Ubuntu 18.04**.
 
@@ -16,7 +16,7 @@
 
 ## Instructions
 
-### Get dependent files
+### Get Dependent Files
 
 The following notations is used in this document:
 
@@ -36,7 +36,7 @@ This copies the reseller-webapp*.war, and rt_create.sql into
 2. rt_create.sql
 3. rt_config.sql
 
-### Default sample configurations
+### Default Sample Configurations
 
 A docker-compose.yml with default configuration is present in the directory \<sdo-supply-chain-tools-docker>.
 A sample keystore is provided at \<sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12,
@@ -45,20 +45,20 @@ This is an example implementation for demo purposes and should be updated in pro
 Modify rt_config.sql following instructions given in the respective files to customize for your environment,
 and replace the sample keystore.
 
-### Create Java keystore file
+### Create Java* Keystore File
 
 See instructions in the Secure Device Onboard Keystore Setup Guide.  Once the file is created, update 
 docker-compose.yml to reflect the file name, path and password. The default configured is \<sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12.
 The reseller will not start if the keystore is not present.
 
-### Modify docker-compose.yml configuration as needed
+### Modify docker-compose.yml Configuration as Needed
 Review the docker-compose.yml file and follow instructions in the file to customize for your environment.
 Edit the application's properties stored in reseller-mariadb.env and reseller.env, as needed.
 
-### Modify settings.xml configuration as needed
+### Modify settings.xml Configuration as Needed
 Edit settings.xml file and add your user and password.
 
-### Modify tomcat-users.xml configuration as needed
+### Modify tomcat-users.xml Configuration as Needed
 Edit tomcat-users.xml file and add your admin user and password.
 
 ### Start/Stop Docker
