@@ -14,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.bouncycastle.util.encoders.Base64;
 import org.sdo.sct.ResourceBundleHolder;
 import org.sdo.sct.Voucher;
 import org.sdo.sct.VoucherHeader;
@@ -91,8 +92,8 @@ public class OwnershipVoucherEntry {
     this.customer = customer;
 
     // set the device uuid from the voucher contents
-    ByteBuffer bb =
-        ByteBuffer.wrap(VoucherHeader.of(Voucher.of(voucher).getOh()).getGuid().getBytes());
+    String guid = VoucherHeader.of(Voucher.of(voucher).getOh()).getGuid().replace("\"", "");
+    ByteBuffer bb = ByteBuffer.wrap(Base64.decode(guid));
     long high = bb.getLong();
     long low = bb.getLong();
     this.deviceUuid = new UUID(high, low).toString();
