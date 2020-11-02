@@ -1,7 +1,7 @@
 # Copyright 2020 Intel Corporation
 # SPDX-License-Identifier: Apache 2.0
 
-FROM mariadb:bionic
+FROM mariadb:focal
 
 ENV MYSQL_DATABASE ${MYSQL_DATABASE}
 ENV MYSQL_ROOT_PASSWORD ${MYSQL_ROOT_PASSWORD}

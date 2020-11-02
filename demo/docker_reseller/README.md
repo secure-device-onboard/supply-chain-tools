@@ -4,7 +4,7 @@
 
 ## System requirements
 
-* Operating system: **Linux Ubuntu 18.04**.
+* Operating system: **Linux Ubuntu 20.04**.
 
 * Linux packages:
 

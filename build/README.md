@@ -4,7 +4,7 @@ Docker Script for Building Supply-Chain-Tools repository. Using this script you 
 
 ## Prerequisites
 
-- Operating system: **Ubuntu 18.04.**
+- Operating system: **Ubuntu 20.04.**
 
 - Docker engine : **18.06.0**
 
