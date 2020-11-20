@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.sdo</groupId>
     <artifactId>sct</artifactId>
-    <version>1.10-SNAPSHOT</version>
+    <version>1.10</version>
     <relativePath>..</relativePath>
   </parent>
 
