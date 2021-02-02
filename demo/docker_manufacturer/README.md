@@ -1,10 +1,10 @@
-**NOTE**: Supply Chain Tools demo docker scripts are provided solely to demonstrate the interoperation of Supply Chain Tools with an example database and configuration.  _These scripts are not recommended for use in any production capacity._  Appropriate security measures with respect to key-store management and configuration management should be considered while performing production deployment of any Secure Device Onboard component.
+***NOTE***: Supply Chain Tools demo docker scripts are provided solely to demonstrate the interoperation of Supply Chain Tools with an example database and configuration.  _These scripts are not recommended for use in any production capacity._  Appropriate security measures with respect to key-store management and configuration management should be considered while performing production deployment of any Secure Device Onboard component.
 
 # Manufacturer Toolkit Docker Configuration
 
 ## System Requirements
 
-* Operating system: **Linux Ubuntu 18.04**.
+* Operating system: **Linux* Ubuntu* 20.04**.
 
 * Linux packages:
 
@@ -16,7 +16,7 @@
 
 ## Instructions
 
-### Get dependent files
+### Get Dependent Files
 
 The following notations is used in this document:
 
@@ -38,7 +38,7 @@ This copies the manufacturer-webapp*.war, mt_create.sql and rt_create.sql into
 4. mt_config.sql
 5. rt_config.sql
 
-### Default sample configurations
+### Default Sample Configurations
 
 A docker-compose.yml with default configuration is present in the directory \<sdo-supply-chain-tools-docker>.
 A sample keystore is provided at \<sdo-supply-chain-tools-docker>/keys/manufacturer-keystore.p12,
@@ -47,25 +47,25 @@ This is an example implementation for demo purposes and should be updated in pro
 Modify mt_config.sql and rt_config.sql following instructions given in the respective files to customize for your environment,
 and replace the sample keystore.
 
-### OnDie ECDSA configuration
+### OnDie ECDSA Configuration
 
 If OnDie ECDSA support is needed, run the script located at \<sdo-supply-chain-tools>/scripts/onDieCache.py,
 to populate the directory \<sdo-supply-chain-tools-docker>/ondiecache with OnDie ECDSA certs and crls.
 Refer to the README located at <sdo-supply-chain-tools> for more information.
 
-### Create Java keystore file
+### Create Java Keystore File
 
-See instructions in the Secure Device Onboard [Keystore Setup Guide](https://secure-device-onboard.github.io/docs/latest/supply-chain-tools/keystore-guide/). Once the file is created, update docker-compose.yml to reflect the file name, path and password. The default configured is \<sdo-supply-chain-tools-docker>/keys/manufacturer-keystore.p12.
+See instructions in the Secure Device Onboard [Keystore Setup Guide](https://secure-device-onboard.github.io/docs/latest/supply-chain-tools/keystore-guide/). Once the file is created, update docker-compose.yml to reflect the file name, path, and password. The default configured is \<sdo-supply-chain-tools-docker>/keys/manufacturer-keystore.p12.
 The manufacturer will not start if the keystore is not present.
 
-### Modify docker-compose.yml configuration as needed
+### Modify docker-compose.yml Configuration as Needed
 Review the docker-compose.yml file and follow instructions in the file to customize for your environment.
 Edit the application's properties stored in manufacturer-mariadb.env and manufacturer.env, as needed.
 
-### Modify settings.xml configuration as needed
+### Modify settings.xml Configuration as Needed
 Edit settings.xml file and add your user and password.
 
-### Modify tomcat-users.xml configuration as needed
+### Modify tomcat-users.xml Configuration as Needed
 Edit tomcat-users.xml file and add your admin user and password.
 
 ### Start/Stop Docker
@@ -83,7 +83,7 @@ $ sudo docker-compose up
 $ sudo docker stop $(sudo docker ps -a -q)
 ```
 
-* Use the following command to delete all the docker artifacts. (Note: docker containers must be stopped before deleting
+* Use the following command to delete all the docker artifacts. (***Note:*** docker containers must be stopped before deleting
 them)
 ```
 $ sudo docker system prune -a
