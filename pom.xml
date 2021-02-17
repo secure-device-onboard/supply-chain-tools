@@ -11,13 +11,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sdo</groupId>
   <artifactId>sct</artifactId>
-  <version>1.10</version>
+  <version>1.10.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.5.RELEASE</version>
+    <version>2.3.8.RELEASE</version>
     <relativePath/>
   </parent>
 
@@ -39,7 +39,7 @@
 
     <apache-commons-collections.version>4.4</apache-commons-collections.version>
     <apache-commons-validator.version>1.7</apache-commons-validator.version>
-    <bouncycastle.version>1.66</bouncycastle.version>
+    <bouncycastle.version>1.68</bouncycastle.version>
     <junit-jupiter.version>5.6.3</junit-jupiter.version>
     <mariadb.version>2.6.0</mariadb.version>
     <sqlserver.version>8.2.2.jre11</sqlserver.version>
