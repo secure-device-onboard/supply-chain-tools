@@ -12,7 +12,7 @@ export https_proxy_port=$(echo $https_proxy | awk -F':' {'print $3'} | tr -d '/'
 export _JAVA_OPTIONS="-Dhttp.proxyHost=$http_proxy_host -Dhttp.proxyPort=$http_proxy_port -Dhttps.proxyHost=$https_proxy_host -Dhttps.proxyPort=$https_proxy_port"
 
 REMOTE_URL=https://github.com/secure-device-onboard/supply-chain-tools.git
-REMOTE_BRANCH=master
+REMOTE_BRANCH=1.10-rel
 
 if [ "$use_remote" = "1" ]; then
   echo "Building $REMOTE_URL : $REMOTE_BRANCH"
