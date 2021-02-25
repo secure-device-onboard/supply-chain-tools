@@ -272,48 +272,31 @@ generated vouchers to the entities you identified in the previous step.
 
 ## Configuring OnDie ECDSA
 
-Set the following Java properties in your servlet container. In typical environments, only
-sdo.ondiecache.cachedir and sdo.ondiecache.autoupdate are used.
-The cachedir is used to store CRL and cert files and can be populated by either setting autoupdate to true
-or by running the provided script (onDieCache.py) to load the directory with the files from the cloud.
-If autoupdate is set to true the owner application will load the cache upon startup. However, if operating
-in OnPrem mode then this is not possible so the script should be used. To run the script, python must be installed.
-Invoke as follows: python onDieCache.py CACHEDIR
+If supporting OnDie ECDSA devices, set the following Java properties in your servlet container. In typical
+environments, only sdo.ondiecache.cachedir is used. The cachedir is used to store CRL and cert files and
+can be populated by running the provided script (scripts/onDieCache.py) to load the directory with the files
+from the cloud.
+
+To run the onDieCache.py script, python3 must be installed.
+Invoke as follows: python3 onDieCache.py CACHEDIR
 where CACHEDIR = target location to store CRL and cert files. Typically, this will match the value of sdo.ondiecache.cachedir.
 However, it is also possible to run the script on a different host and then copy the downloaded files into sdo.ondiecache.cachedir.
 The exact setup will vary depending on the runtime environment and user needs.
 
 - <code>sdo.ondiecache.cachedir</code>
 
-Set this to the file: Uniform Resource Identifier (URI) of the directory to contain cache files.
+Set this to the file: Uniform Resource Identifier (URI) of the directory that contains the cert and CRL files.
 
 Example:
 
     sdo.ondiecache.cachedir=file:///C:/SDO/ondiecache
 
-- <code>sdo.ondiecache.autoupdate</code>
-
-Set this to true or false to enable autoupdate of cachedir from urlsources.
-Default: false
-
-Example:
-
-    sdo.ondiecache.autoupdate=true
-
-- <code>sdo.ondiecache.urlsources</code>
-
-Set to list of urls containing cert and CRL files for OnDie ECDSA. This should only be needed when
-debugging or working with pre-production hardware. In production environments, 
-Default: https://tsci.intel.com/content/OnDieCA/certs/,https://tsci.intel.com/content/OnDieCA/crls/
-
-Example:
-
-    sdo.ondiecache.urlsources=https://tsci.intel.com/content/OnDieCA/certs/,https://tsci.intel.com/content/OnDieCA/crls/
 
 - <code>sdo.ondiecache.revocations</code>
 
-Set this to true or false to enable revocation checking of OnDie ECDSA signatures. This should not be
-used in production environments and only used when debugging or working with pre-production hardware.
+Set this to true or false to enable revocation checking of OnDie ECDSA signatures. The default value is
+false. This should not be set to true in production environments and should only set to false when debugging
+or working with pre-production hardware.
 
 Example:
 
