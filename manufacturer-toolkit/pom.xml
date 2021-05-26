@@ -19,6 +19,10 @@
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+      <jsoup.version>1.13.1</jsoup.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.sdo.sct</groupId>
@@ -70,7 +74,7 @@
       <!-- jsoup HTML parser library @ https://jsoup.org/ -->
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.13.1</version>
+      <version>${jsoup.version}</version>
     </dependency>
 
     <dependency>
