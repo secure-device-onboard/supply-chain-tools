@@ -49,6 +49,7 @@ and replace the sample keystore.
 
 See instructions in the Secure Device Onboard Keystore Setup Guide.  Once the file is created, update 
 docker-compose.yml to reflect the file name, path and password. The default configured is \<sdo-supply-chain-tools-docker>/keys/reseller-keystore.p12.
+This is an example implementation for demo purposes and should be updated in production deployment.
 The reseller will not start if the keystore is not present.
 
 ### Modify docker-compose.yml Configuration as Needed
