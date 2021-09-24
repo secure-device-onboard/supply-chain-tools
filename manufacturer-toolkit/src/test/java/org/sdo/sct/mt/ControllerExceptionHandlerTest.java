@@ -81,6 +81,6 @@ class ControllerExceptionHandlerTest {
 
     given(request.getServletPath()).willReturn("");
     ResponseEntity<?> r = ceh.handle(t, request);
-    assertEquals(status, r.getStatusCode());
+    assertEquals(status.value(), r.getStatusCode().value());
   }
 }
