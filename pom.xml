@@ -26,7 +26,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
 
-    <tomcat.version>9.0.52</tomcat.version>
+    <tomcat.version>9.0.53</tomcat.version>
     <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
     <clover.version>4.3.1</clover.version>
     <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
