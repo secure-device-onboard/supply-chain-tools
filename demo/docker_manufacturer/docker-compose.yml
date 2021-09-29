@@ -16,7 +16,7 @@ services:
       # args:
         # http_proxy: http://yourProxy.yourCompany.com:80
         # https_proxy: http://yourProxy.yourCompany.com:443
-    image: manufacturer:1.10.3-SNAPSHOT
+    image: manufacturer:1.10.3
     container_name: manufacturer
     restart: on-failure:5
     ports:
@@ -47,7 +47,7 @@ services:
       # args:
         # http_proxy: http://yourProxy.yourCompany.com:80
         # https_proxy: http://yourProxy.yourCompany.com:443
-    image: manufacturer-mariadb:1.10.3-SNAPSHOT
+    image: manufacturer-mariadb:1.10.3
     container_name: manufacturer-mariadb
     restart: on-failure:5
     ports:
