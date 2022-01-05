@@ -44,7 +44,7 @@
     <junit-jupiter.version>5.7.2</junit-jupiter.version>
     <mariadb.version>2.7.3</mariadb.version>
     <sqlserver.version>9.2.1.jre11</sqlserver.version>
-    <log4j.version>2.16.0</log4j.version>
+    <log4j.version>2.17.1</log4j.version>
     <demo.manufacturer.dir>./demo/docker_manufacturer/</demo.manufacturer.dir>
     <demo.reseller.dir>./demo/docker_reseller/</demo.reseller.dir>
   </properties>
