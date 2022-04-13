@@ -1,3 +1,5 @@
+***Note:***  The support for this product will be discontinued from Dec 1, 2022. We recommend users to switch to FDO components (https://github.com/secure-device-onboard/pri-fidoiot).
+
 # Secure Device Onboard (SDO) Supply Chain Tools Quick Start
 
 The SDO Supply Chain Tools include multiple web archives (.war files).
