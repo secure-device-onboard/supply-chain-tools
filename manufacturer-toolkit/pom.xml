@@ -20,7 +20,7 @@
   </parent>
 
   <properties>
-      <jsoup.version>1.14.2</jsoup.version>
+      <jsoup.version>1.15.3</jsoup.version>
       <junit.version>4.13.2</junit.version>
   </properties>
 
