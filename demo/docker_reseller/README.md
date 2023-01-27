@@ -8,9 +8,9 @@
 
 * Linux packages:
 
-    `Docker engine (minimum version 18.06.0)`
+    `Docker engine (minimum version 19.03.15)`
 
-    `Docker-compose (minimum version 1.23.2)`
+    `Docker-compose (minimum version 1.21.2)`
 
 * Internet connection
 
