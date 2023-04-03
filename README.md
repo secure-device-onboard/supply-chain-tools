@@ -1,4 +1,4 @@
-***Note:***  This product has been discontinued. We recommend users to switch to FDO components (https://github.com/secure-device-onboard/pri-fidoiot).
+***Note:***  This product has been discontinued since Mar 31, 2023. We recommend users to switch to FDO components (https://github.com/secure-device-onboard/pri-fidoiot).
 
 # Secure Device Onboard (SDO) Supply Chain Tools Quick Start
 
